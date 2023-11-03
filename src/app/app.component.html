@@ -1,0 +1,14 @@
+<div class="app-wrapper">
+  <div class="top-section">
+    <h1>19:00</h1>
+    <h2>1 January 1900</h2>
+  </div>
+  <!--Component goes here! The compoent of the root div is placed insde this contect section div, this is why we style the transitions betweeen root views in this section-->
+  <div class="content-section" [@routeAnim]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+  <div class="bottom-section">
+    <app-tabs></app-tabs>
+  </div>
+  <app-notification></app-notification>
+</div>

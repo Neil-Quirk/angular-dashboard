@@ -1,0 +1,19 @@
+<div class="manage-bookmarks-wrapper container">
+  <div class="siderbar">
+    <p class="sidebar-heading">Your Bookmarks</p>
+    <div class="sidebar-items">
+      <a
+        [routerLink]="[bookmark.id]"
+        routerLinkActive="selected"
+        class="sidebar-item"
+        *ngFor="let bookmark of bookmarks"
+      >
+        {{ bookmark.name }}</a
+      >
+    </div>
+  </div>
+  <div class="content">
+    <!-- this brings the edit bookmark component into the white section of the manage bookmark view. See app-routing for the setup of the child -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

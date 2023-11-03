@@ -1,0 +1,32 @@
+<div class="add-todo-wrapper container has-blurred-white-bg">
+  <h2 class="is-bold">Add Task</h2>
+
+  <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+    <div class="form-field">
+      <input
+        class="textbox"
+        ngModel
+        #textField="ngModel"
+        name="text"
+        type="text"
+        placeholder="What do you need to do?"
+        required
+        minlength="3"
+      />
+
+      <ng-container *ngIf="showValidationErrors && textField?.invalid">
+        <p *ngIf="textField?.errors?.['required']">
+          You can't do nothing...you need to enter something
+        </p>
+        <p *ngIf="textField?.errors?.['minlength']">
+          Your action needs to be more than 3 characters
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="btns-container">
+      <button class="btn">Save Task</button>
+      <a routerLink="../" class="btn align-end">Cancel</a>
+    </div>
+  </form>
+</div>

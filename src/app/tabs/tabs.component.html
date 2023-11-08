@@ -1,25 +1,24 @@
 <div class="tabs">
+  <a
+    routerLink="bookmarks"
+    routerLinkActive="selected"
+    class="tab bookmarks-tab"
+  >
+    <!--Router link is how we tell angular which page we want to be on, To use this you must have set up router linking in the app routing module-->
 
-    <a routerLink="bookmarks" routerLinkActive="selected" class="tab bookmarks-tab"> <!--Router link is how we tell angular which page we want to be on, To use this you must have set up router linking in the app routing module-->
-
-        <div class="tab-tile">
-            <i class="material-icons-outlined">bookmarks</i><!-- the material design import on the styles.css page allows us to pull in the outline design using a name in the icon div -->
-        </div>
-
-    </a>
-    <a routerLink="todos" routerLinkActive="selected" class="tab todo-tab">
-
-        <div class="tab-tile">
-            <i class="material-icons-outlined">check</i>
+    <div class="tab-tile" title="Bookmarks">
+      <i class="material-icons-outlined">bookmarks</i
+      ><!-- the material design import on the styles.css page allows us to pull in the outline design using a name in the icon div -->
     </div>
-
-    </a>
-    <a routerLink="notes" routerLinkActive="selected" class="tab notes-tab">
-
-        <div class="tab-tile">
-            <i class="material-icons-outlined">notes</i> 
-        </div>
-
-    </a>
-
+  </a>
+  <a routerLink="todos" routerLinkActive="selected" class="tab todo-tab">
+    <div class="tab-tile" title="Tasks">
+      <i class="material-icons-outlined">task_alt</i>
+    </div>
+  </a>
+  <a routerLink="notes" routerLinkActive="selected" class="tab notes-tab">
+    <div class="tab-tile" title="Notes">
+      <i class="material-icons-outlined">note_alt</i>
+    </div>
+  </a>
 </div>

@@ -1,27 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '../shared/notification.service';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { NotificationData } from '../shared/notification-data.model';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+  styleUrls: ['./notification.component.scss'],
+  animations: [
+    trigger('notificationAnim', [
+      transition(':enter', [
+        style({
+          opacity:0,
+          transform: 'translateY(10px)'
+        }),
+        animate('150ms 125ms ease-out')
+      ]),
+      transition(':leave', [
+        animate(125, style({
+          opacity: 0,
+          transform: 'scale(0.85)'
+        }))
+      ])
+    ])
+  ]
 })
 export class NotificationComponent implements OnInit {
-  notification!: string | null;
+  notification!: NotificationData[] | null
 
   timeout: any
 
 constructor(private notificationService: NotificationService) {}
   ngOnInit(): void {
 
-    this.notificationService.getNotifications$().subscribe((notification: string) => {
-      this.notification = notification
+    this.notificationService.getNotifications$().subscribe((notification: NotificationData) => {
+      this.notification = Array(notification)
 
       clearTimeout(this.timeout)
 
       this.timeout = setTimeout(() => {
         this.notification = null
-      }, 1000)
+      }, notification.duration)
     })
     
   }

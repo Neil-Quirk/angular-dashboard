@@ -40,7 +40,7 @@ export class EditBookmarkComponent implements OnInit {
         url: new URL(url)
       })
       // this.router.navigateByUrl("/bookmarks")
-      this.notificationService.show('Bookmark Updated')
+      this.notificationService.show('Bookmark Updated', 1000)
     }
 
     delete() {
@@ -50,6 +50,7 @@ export class EditBookmarkComponent implements OnInit {
         return
       }
       this.router.navigate(['../'], { relativeTo: this.route})
+      this.notificationService.show('Bookmark Deleted!', 1000)
     }
   
     

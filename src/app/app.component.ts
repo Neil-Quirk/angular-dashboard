@@ -132,6 +132,7 @@ import {
   ],
 })
 export class AppComponent {
+  bg: string = ''
   prepareRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) return outlet.activatedRouteData['tab'];
   }

@@ -1,12 +1,28 @@
 <div class="app-wrapper">
-  <img src="" class="bg-img" />
-  <div class="btn change-bg-btn">
+  <img
+    [src]="bg"
+    *ngFor="let bg of backgrounds.reverse()"
+    class="bg-img"
+    (load)="onBGImageLoad($event)"
+    @bgAnim
+  />
+  <div
+    class="btn change-bg-btn"
+    (click)="changeBGImage()"
+    *ngIf="!loadingBGImage"
+    @fadeAnim
+  >
     <i class="material-icons">refresh</i>
   </div>
+  <!-- One day i'll figure out how to save the image so that when it refreshes it keeps your saved image -->
+  <!-- <div class="btn save-bg-btn">
+    <i class="material-icons">save</i>
+  </div> -->
 
   <div class="top-section">
-    <h1>19:00</h1>
-    <h2>1 January 1900</h2>
+    <!-- <h1>19:00</h1> -->
+    <h1>{{ dateTime | async | date : "HH:mm" }}</h1>
+    <h2>{{ dateTime | async | date : "fullDate" }}</h2>
   </div>
   <!--Component goes here! The compoent of the root div is placed insde this contect section div, this is why we style the transitions betweeen root views in this section-->
   <div class="content-section" [@routeAnim]="prepareRoute(outlet)">
